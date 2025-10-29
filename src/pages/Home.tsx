@@ -3,23 +3,37 @@ import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/ProductCard';
 import { getProducts } from '@/lib/localStorage';
 import { ArrowRight, Award, Shield, Truck } from 'lucide-react';
+import heroBanner from '@/assets/hero-banner.jpg';
+import categoryTextiles from '@/assets/category-textiles.jpg';
+import categoryMetal from '@/assets/category-metal.jpg';
+import categoryWood from '@/assets/category-wood.jpg';
+import categoryFiber from '@/assets/category-fiber.jpg';
+import patternBg from '@/assets/pattern-bg.jpg';
 
 export default function Home() {
   const products = getProducts();
   const featuredProducts = products.slice(0, 8);
   
   const categories = [
-    { name: 'Textile Weaves', image: 'https://lepakshihandicrafts.gov.in/wp-content/uploads/2024/03/Kalamkari-1.jpg', count: products.filter(p => p.category === 'Textile Weaves').length },
-    { name: 'Metal Crafts', image: 'https://lepakshihandicrafts.gov.in/wp-content/uploads/2024/02/Brass-1.jpg', count: products.filter(p => p.category === 'Metal Crafts').length },
-    { name: 'Wood Crafts', image: 'https://lepakshihandicrafts.gov.in/wp-content/uploads/2024/02/Wood-1.jpg', count: products.filter(p => p.category === 'Wood Crafts').length },
-    { name: 'Natural Fibers', image: 'https://lepakshihandicrafts.gov.in/wp-content/uploads/2024/02/Bamboo-1.jpg', count: products.filter(p => p.category === 'Natural Fibers').length },
+    { name: 'Textile Weaves', image: categoryTextiles, count: products.filter(p => p.category === 'Textile Weaves').length },
+    { name: 'Metal Crafts', image: categoryMetal, count: products.filter(p => p.category === 'Metal Crafts').length },
+    { name: 'Wood Crafts', image: categoryWood, count: products.filter(p => p.category === 'Wood Crafts').length },
+    { name: 'Natural Fibers', image: categoryFiber, count: products.filter(p => p.category === 'Natural Fibers').length },
   ];
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-primary-foreground overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4wNSIvPjwvZz48L3N2Zz4=')] opacity-20"></div>
+      <section className="relative text-primary-foreground overflow-hidden">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src={heroBanner} 
+            alt="Traditional Indian Handicrafts" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/70"></div>
+        </div>
         
         <div className="container relative mx-auto px-4 py-20 md:py-32">
           <div className="max-w-3xl animate-fade-in">
@@ -162,8 +176,15 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-accent/10 via-accent/5 to-transparent">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <img 
+            src={patternBg} 
+            alt="Pattern Background" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="container relative mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Support Traditional Artisans
           </h2>
